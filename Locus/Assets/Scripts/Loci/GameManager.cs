@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 		Services.PrefabDB = Resources.Load<PrefabDataBase>("Prefabs/PrefabDataBase");
 		Services.LociManager = new LociManager();
 		Services.LociManager.PopulateSpawnPoints();
-		Services.LociManager.Create();
+		Services.LociManager.Create(30);
 		
 	}
 	

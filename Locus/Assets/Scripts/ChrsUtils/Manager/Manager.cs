@@ -42,7 +42,7 @@ namespace ChrsUtils
 		    /*--------------------------------------------------------------------------------------*/
             public abstract class Manager<T> : MonoBehaviour where T : IManaged
             {
-                protected static readonly List<T> ManagedObjects = new List<T>();       //  List of Managed Objects
+                public static readonly List<T> ManagedObjects = new List<T>();       //  List of Managed Objects
 
                 public abstract T Create();             //  Abstarct class to creat the managed object
 

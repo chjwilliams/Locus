@@ -59,7 +59,13 @@ namespace LocusNodes
 		public override bool Update(BasicLocus locus)
 		{
 			locus.isWandering = false;
-			//	Sets less ambitious loci to flock behind an ambitious locus
+			if(Random.Range(0,5) < 1)
+			{
+				locus.ApplyFlockingRules();
+				locus.Flock();
+			}
+
+			
 			return true;
 		}
 	}

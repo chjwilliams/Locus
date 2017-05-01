@@ -14,8 +14,14 @@ namespace Locus
 		override protected void Start () 
 		{
 			base.Start();
-			dangerousEntity = GameObject.FindGameObjectWithTag("Player").transform;
-
+			if(Random.Range(0, 10) < 1)
+			{
+				dangerousEntity = myManager.managedObjects[Random.Range(0, myManager.managedObjects.Count)].transform;
+			}
+			else
+			{
+				dangerousEntity = GameObject.FindGameObjectWithTag("Player").transform;
+			}
 			m_Tree = 
 			new Tree<BasicLocus>
 			(

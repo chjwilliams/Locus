@@ -10,6 +10,7 @@ namespace LocusIManager
 	public class LociManager : Manager<BasicLocus>
 	{
 		public GameObject[] spawnPoints;
+		public List<BasicLocus> managedObjects = ManagedObjects;
 		private readonly System.Random _rng = new System.Random();
 
 		public void PopulateSpawnPoints()
@@ -24,6 +25,18 @@ namespace LocusIManager
             ManagedObjects.Add(locus);
             locus.OnCreated();
             return locus;
+        }
+
+		public List<BasicLocus> Create(uint n)
+        {
+            List<BasicLocus> loci = null;
+
+            loci = new List<BasicLocus>();
+            for (var i = 0; i < n; i++)
+            {
+                loci.Add(Create());
+            }
+            return loci;
         }
 
 		public override void Destroy(BasicLocus locus)
@@ -44,24 +57,24 @@ namespace LocusIManager
 		public BasicLocus Init(LocusType locusType)
 		{
             BasicLocus locus = null;
-			GameObject newLocus = MonoBehaviour.Instantiate(Services.PrefabDB.Locus[0], spawnPoints[0].transform.position, Quaternion.identity) as GameObject;
+			GameObject newLocus = MonoBehaviour.Instantiate(Services.PrefabDB.Locus[0], spawnPoints[_rng.Next(0, spawnPoints.Length)].transform.position, Quaternion.identity) as GameObject;
             
 			locus = new BasicLocus();
 			switch (locusType.ToString())
 			{
-			    case "TRIANGLE_PREFAB":
+			    case "0":
 	    		   	newLocus.AddComponent <MelaLoci> ();
 				    locus = newLocus.GetComponent <MelaLoci> ();
 				   	break;
-				case "SQUARE_PREFAB":
+				case "1":
 				   	newLocus.AddComponent <PhleLoci> ();
 			    	locus = newLocus.GetComponent <PhleLoci> ();
 			    	break;
-                case "PENTAGON_PREFAB":
+                case "2":
 			    	newLocus.AddComponent <CholLoci> ();
 				   	locus = newLocus.GetComponent <CholLoci> ();
 			    	break;
-                case "HEXAGON_PREFAB":
+                case "3":
 			    	newLocus.AddComponent <SangLoci> ();
 			    	locus = newLocus.GetComponent <SangLoci> ();
 			    	break;

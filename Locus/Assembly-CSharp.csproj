@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Loci\Locus\PhleLoci.cs" />
      <Compile Include="Assets\Scripts\Loci\Locus\SangLoci.cs" />
      <Compile Include="Assets\Scripts\Loci\PlayerController.cs" />
+     <None Include="Assets\ProjectorAdditive.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
